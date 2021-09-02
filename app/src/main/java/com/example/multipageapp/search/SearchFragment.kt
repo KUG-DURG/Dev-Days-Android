@@ -1,18 +1,20 @@
-package com.example.multipageapp.fragment
+package com.example.multipageapp.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.multipageapp.databinding.FragmentSearchBinding
+import com.example.multipageapp.home.viewmodel.HomeViewModel
 
 class SearchFragment : Fragment() {
 
     lateinit var binding: FragmentSearchBinding
 
-    val args: SearchFragmentArgs by navArgs()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +32,18 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //api
+//        homeViewModel.userLiveData.observe(viewLifecycleOwner, Observer { userModel->
+//
+//            binding.nameTv.text =  userModel.data?.get(0)?.firstName ?:"No Data"
+//        })
 
-        if (args.name.isNullOrEmpty().not()) {
-            binding.nameTv.text = args.name
-        }
+        //sharing data b/w
+        homeViewModel.passingData.observe(viewLifecycleOwner, Observer {
 
-    }
+            binding.nameTv.text = it
+        })
 
-    override fun setArguments(args: Bundle?) {
-        super.setArguments(args)
     }
 
 }

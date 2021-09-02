@@ -1,11 +1,8 @@
 package com.example.multipageapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.multipageapp.databinding.ActivityMainBinding
@@ -26,21 +23,11 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "onCreate: called")
 
-        //send data to other activity
-//        binding.btn.setOnClickListener {
-//
-//            val intent = Intent(this,SecondActivity::class.java)
-//
-//            intent.putExtra("name","DeveloperDays")
-//
-//            startActivity(intent)
-//
-//        }
-
         //set up bottom navigation component
         val navHost = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
 
         binding.btmNav.setupWithNavController(navHost.navController)
+
 
     }
 
